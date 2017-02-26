@@ -5,4 +5,9 @@ import tornadofx.Controller
 
 class TextAreaController: Controller() {
     val textAreaView: TextAreaView by inject()
+    val textArea = textAreaView.root
+
+    fun selectAll() {
+        textArea.selectAll()
+    }
 }

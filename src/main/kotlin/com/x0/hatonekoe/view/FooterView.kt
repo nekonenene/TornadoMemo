@@ -11,6 +11,8 @@ class FooterView: View() {
     val footerController: FooterController by inject()
 
     override val root = hbox {
+        alignment = Pos.CENTER_RIGHT
+        
         label("Count: 0") {
             useMaxWidth = true
             alignment = Pos.CENTER_RIGHT

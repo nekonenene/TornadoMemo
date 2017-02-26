@@ -10,6 +10,11 @@ class TextAreaView: View() {
 
     override val root = textarea {
         useMaxWidth = true
+
+        setOnKeyReleased {
+            println("キーが離れました")
+            // 処理
+        }
     }
 }
 

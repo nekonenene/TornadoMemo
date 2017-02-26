@@ -5,6 +5,7 @@ import tornadofx.Controller
 
 class MainController: Controller() {
     val mainView: MainView by inject()
+    /*
     val textArea = mainView.textArea
     val textManager = mainView.textManager
 
@@ -16,4 +17,5 @@ class MainController: Controller() {
     fun selectAll() {
         textArea.selectAll()
     }
+    */
 }

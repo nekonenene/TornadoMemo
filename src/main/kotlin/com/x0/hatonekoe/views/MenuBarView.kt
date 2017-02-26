@@ -24,6 +24,7 @@ class MenuBarView: View() {
         }
 
         menu("Edit") {
+            menuitem("Select All")
             menuitem("Copy")
             menuitem("Paste")
         }

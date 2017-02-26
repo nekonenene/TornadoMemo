@@ -1,14 +1,14 @@
 package com.x0.hatonekoe.model
 
+import javafx.beans.property.SimpleStringProperty
 import tornadofx.ViewModel
-import tornadofx.getProperty
-import tornadofx.property
 
 class TextDocumentModel(var textDocument: TextDocument): ViewModel() {
-    val text = bind { textDocument.textProperty() }
+    val text = bind { textDocument.textProperty }
+    val charCounterText = bind { textDocument.charCounterTextProperty }
 }
 
-class TextDocument(_text: String = "") {
-    var text by property(_text)
-    fun textProperty() = getProperty(TextDocument::text)
+class TextDocument {
+    val textProperty = SimpleStringProperty()
+    val charCounterTextProperty = SimpleStringProperty()
 }

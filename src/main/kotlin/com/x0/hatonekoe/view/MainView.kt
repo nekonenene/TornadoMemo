@@ -13,8 +13,14 @@ class MainView: View("TornadoMemo") {
     val textManager = TextManager()
 
     override val root = borderpane {
+        println("init Main View")
+
         top = menuBarView.root
         center = textAreaView.root
         bottom = footerView.root
+    }
+
+    init {
+        title = "Tornado Memo"
     }
 }

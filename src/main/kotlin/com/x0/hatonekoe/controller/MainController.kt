@@ -7,20 +7,5 @@ import tornadofx.Controller
 
 class MainController: Controller() {
     val mainView: MainView by inject()
-    val textDoc = TextDocument("")
-    val textDocModel = TextDocumentModel(textDoc)
-
-    /*
-    val textArea = mainView.textArea
-    val textManager = mainView.textManager
-
-    fun updateText() {
-        textManager.text = textArea.text
-        textManager.update()
-    }
-
-    fun selectAll() {
-        textArea.selectAll()
-    }
-    */
+    val textDocModel = TextDocumentModel(TextDocument())
 }

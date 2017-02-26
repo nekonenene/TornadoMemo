@@ -11,12 +11,12 @@ import tornadofx.bind
 class MainView: View("TornadoMemo") {
     private val controller: MainController by inject()
 
-    override val root: BorderPane by fxml("/styles/MainView.fxml")
-    private val menuBarView: MenuBarView by inject()
-    val textArea: TextArea by fxid("textArea")
-    private val charCounterLabel: Label by fxid("charCounter")
+    override val root    : BorderPane by fxml("/styles/MainView.fxml")
+    val menuBarView      : MenuBarView by inject()
+    val textArea         : TextArea by fxid("textArea")
+    val charCounterLabel : Label by fxid("charCounter")
 
-    private val textManager = TextManager()
+    val textManager = TextManager()
 
     init {
         println("init Main View")

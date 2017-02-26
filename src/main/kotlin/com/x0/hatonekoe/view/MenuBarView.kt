@@ -1,11 +1,14 @@
 package com.x0.hatonekoe.view
 
+import com.x0.hatonekoe.controller.MainController
 import tornadofx.View
 import tornadofx.menu
 import tornadofx.menubar
 import tornadofx.menuitem
 
 class MenuBarView: View() {
+    val mainController: MainController by inject()
+
     override val root = menubar {
         menu("File") {
             menuitem("New")
@@ -24,7 +27,12 @@ class MenuBarView: View() {
         }
 
         menu("Edit") {
-            menuitem("Select All")
+            menuitem("Select All") {
+                setOnAction {
+                    println("Select!")
+                    mainController.selectAll()
+                }
+            }
             menuitem("Copy")
             menuitem("Paste")
         }

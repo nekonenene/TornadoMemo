@@ -8,6 +8,7 @@ class TextAreaController: Controller() {
     val textAreaView: TextAreaView by inject()
     val textArea = textAreaView.root
 
+    /** TextArea の中身を全選択 */
     fun selectAll() {
         textArea.selectAll()
     }

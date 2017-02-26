@@ -1,4 +1,4 @@
-package hatonekoe
+package com.x0.hatonekoe
 
 import org.junit.Test
 import kotlin.test.assertEquals

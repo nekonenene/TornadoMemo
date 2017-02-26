@@ -1,4 +1,4 @@
-package com.x0.hatonekoe.views
+package com.x0.hatonekoe.view
 
 import tornadofx.View
 import tornadofx.menu

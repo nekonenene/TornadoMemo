@@ -1,6 +1,6 @@
 package com.x0.hatonekoe
 
-import com.x0.hatonekoe.views.MainView
+import com.x0.hatonekoe.view.MainView
 import javafx.application.Application
 import tornadofx.App
 

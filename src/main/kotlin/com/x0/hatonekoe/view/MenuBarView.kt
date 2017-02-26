@@ -2,16 +2,17 @@ package com.x0.hatonekoe.view
 
 import com.x0.hatonekoe.controller.MenuBarController
 import com.x0.hatonekoe.controller.TextAreaController
-import tornadofx.View
-import tornadofx.menu
-import tornadofx.menubar
-import tornadofx.menuitem
+import tornadofx.*
 
 class MenuBarView: View() {
     val menuBarController: MenuBarController by inject()
     val textAreaController: TextAreaController by inject()
 
     override val root = menubar {
+        useMaxWidth = true
+        paddingVertical = 3
+        paddingHorizontal = 4
+
         menu("File") {
             menuitem("New")
             menuitem("Open")

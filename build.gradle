@@ -16,7 +16,7 @@ buildscript {
 apply plugin: "kotlin"
 apply plugin: "application"
 
-mainClassName = "com.x0.hatonekoe.AppKt"
+mainClassName = "com.x0.hatonekoe.ApplicationKt"
 
 repositories {
     mavenCentral()
@@ -37,7 +37,8 @@ test {
 
 /* jar ファイルを /build/libs 下に作成 */
 task createJar(type: Jar, dependsOn: jar) {
-    archiveName = "output.jar"
+    archiveName = project.name + ".jar"
+    destinationDir = file("$rootDir/dist")
     manifest {
         attributes "Main-Class" : mainClassName
     }

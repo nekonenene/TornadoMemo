@@ -2,7 +2,7 @@
 
 ## What's this?
 
-This is the sample application using TornadoFX with MVC (Model-View-Controller) design pattern.
+This is the sample application using **TornadoFX** with MVC (Model-View-Controller) design pattern.
 
 <p align="center">
     <img src="./dist/capture01.png" alt="TornadoMemo capture01" width="380rem" height="auto">

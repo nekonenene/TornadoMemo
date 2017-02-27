@@ -1,5 +1,6 @@
 package com.x0.hatonekoe
 
+import com.x0.hatonekoe.model.ModelManager
 import com.x0.hatonekoe.view.MainView
 import javafx.application.Application
 import javafx.stage.Stage

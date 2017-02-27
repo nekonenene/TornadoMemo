@@ -5,7 +5,7 @@ import tornadofx.View
 import tornadofx.borderpane
 
 class MainView: View("TornadoMemo") {
-    private val controller: MainController by inject()
+    private val mainController: MainController by inject()
     val menuBarView: MenuBarView by inject()
     val textAreaView: TextAreaView by inject()
     val footerView: FooterView by inject()

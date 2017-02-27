@@ -2,6 +2,7 @@ package com.x0.hatonekoe.view
 
 import com.x0.hatonekoe.controller.MenuBarController
 import com.x0.hatonekoe.controller.TextAreaController
+import javafx.application.Platform
 import javafx.scene.input.KeyCombination
 import tornadofx.*
 
@@ -18,11 +19,11 @@ class MenuBarView: View() {
             menuitem("New", KeyCombination.valueOf("Shortcut+N"))
             menuitem("Open", KeyCombination.valueOf("Shortcut+O"))
             menuitem("Save", KeyCombination.valueOf("Shortcut+S"))
-            menuitem("Quit", KeyCombination.valueOf("Shortcut+Q")) {
-                setOnAction {
-                    println("Pressed Quit!")
+            menuitem("Save as new file", KeyCombination.valueOf("Shortcut+W"))
+            menuitem("Quit", KeyCombination.valueOf("Shortcut+Q"))
+                .setOnAction {
+                    Platform.exit()
                 }
-            }
         }
 
         menu("Edit") {

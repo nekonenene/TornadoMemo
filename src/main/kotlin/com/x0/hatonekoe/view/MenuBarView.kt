@@ -2,6 +2,7 @@ package com.x0.hatonekoe.view
 
 import com.x0.hatonekoe.controller.MenuBarController
 import com.x0.hatonekoe.controller.TextAreaController
+import javafx.scene.input.KeyCombination
 import tornadofx.*
 
 class MenuBarView: View() {
@@ -14,15 +15,10 @@ class MenuBarView: View() {
         paddingHorizontal = 4
 
         menu("File") {
-            menuitem("New")
-            menuitem("Open")
-            menuitem("Save")
-            menu("Recent Files") {
-                menuitem("File A")
-                menuitem("File B")
-                menuitem("File C")
-            }
-            menuitem("Quit") {
+            menuitem("New", KeyCombination.valueOf("Shortcut+N"))
+            menuitem("Open", KeyCombination.valueOf("Shortcut+O"))
+            menuitem("Save", KeyCombination.valueOf("Shortcut+S"))
+            menuitem("Quit", KeyCombination.valueOf("Shortcut+Q")) {
                 setOnAction {
                     println("Pressed Quit!")
                 }
@@ -30,14 +26,26 @@ class MenuBarView: View() {
         }
 
         menu("Edit") {
-            menuitem("Select All") {
-                setOnAction {
+            menuitem("Select All", KeyCombination.valueOf("Shortcut+A"))
+                .setOnAction {
                     println("Select!")
                     textAreaController.selectAll()
                 }
-            }
-            menuitem("Copy")
-            menuitem("Paste")
+            menuitem("Copy", KeyCombination.valueOf("Shortcut+C"))
+                .setOnAction {
+                    textAreaController.copyText()
+                    textAreaController.updateTextDocModel()
+                }
+            menuitem("Cut", KeyCombination.valueOf("Shortcut+X"))
+                .setOnAction {
+                    textAreaController.cutText()
+                    textAreaController.updateTextDocModel()
+                }
+            menuitem("Paste", KeyCombination.valueOf("Shortcut+V"))
+                .setOnAction {
+                    textAreaController.pasteText()
+                    textAreaController.updateTextDocModel()
+                }
         }
     }
 }

@@ -1,5 +1,7 @@
 # Tornado Memo
 
+## What's this?
+
 This is the sample application using TornadoFX with MVC (Model-View-Controller) design pattern.
 
 <p align="center">
@@ -9,28 +11,28 @@ This is the sample application using TornadoFX with MVC (Model-View-Controller) 
 You will know how to construct an app with TornadoFX.
 
 
-# Download
+## Download
 
-## Source file
+### Source file
 
 ```
 git clone git@github.com:nekonenene/TornadoMemo.git
 ```
 
-## Executable file
+### Executable file
 
 You can download .jar file from the following URL.
 
-[https://github.com/nekonenene/TornadoMemo/raw/master/dist/TornadoMemo.jar]
+https://github.com/nekonenene/TornadoMemo/raw/master/dist/TornadoMemo.jar
 
 
-# Links
+## Links
 
 * [**TornadoFX**](https://github.com/edvin/tornadofx)
 * [TornadoFX Samples](https://github.com/edvin/tornadofx-samples)
 * [**Kotlin**](http://kotlinlang.org/)
 
 
-# Note
+## Note
 
 This project is in progress. The source contains unnecessary class or method.

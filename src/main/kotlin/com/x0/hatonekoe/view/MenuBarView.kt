@@ -47,5 +47,14 @@ class MenuBarView: View() {
                     textAreaController.updateTextDocModel()
                 }
         }
+
+        menu("Test") {
+            menuitem("Item1") {
+                // この setOnAction の書き方だと、１度目に押されたときに反応しない。バグ？
+                setOnAction {
+                    println("Item1 pushed!")
+                }
+            }
+        }
     }
 }

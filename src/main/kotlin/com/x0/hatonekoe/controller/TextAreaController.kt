@@ -16,16 +16,19 @@ class TextAreaController: Controller() {
     /** 選択範囲をコピー */
     fun copyText() {
         textArea.copy()
+        updateTextDocModel()
     }
 
     /** 選択範囲を切り取り */
     fun cutText() {
         textArea.cut()
+        updateTextDocModel()
     }
 
     /** TextArea にクリップボードから貼り付け */
     fun pasteText() {
         textArea.paste()
+        updateTextDocModel()
     }
 
     /** TextArea の中身に合わせて TextDocumentModel の中身を更新 */

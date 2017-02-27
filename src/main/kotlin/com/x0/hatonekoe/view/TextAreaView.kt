@@ -19,5 +19,9 @@ class TextAreaView: View() {
             textAreaController.updateTextDocModel()
             footerController.updateCounter()
         }
+
+        setOnMouseClicked {
+            footerController.updateCounter()
+        }
     }
 }

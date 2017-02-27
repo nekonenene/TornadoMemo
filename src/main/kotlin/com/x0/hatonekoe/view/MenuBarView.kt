@@ -35,17 +35,14 @@ class MenuBarView: View() {
             menuitem("Copy", KeyCombination.valueOf("Shortcut+C"))
                 .setOnAction {
                     textAreaController.copyText()
-                    textAreaController.updateTextDocModel()
                 }
             menuitem("Cut", KeyCombination.valueOf("Shortcut+X"))
                 .setOnAction {
                     textAreaController.cutText()
-                    textAreaController.updateTextDocModel()
                 }
             menuitem("Paste", KeyCombination.valueOf("Shortcut+V"))
                 .setOnAction {
                     textAreaController.pasteText()
-                    textAreaController.updateTextDocModel()
                 }
         }
 

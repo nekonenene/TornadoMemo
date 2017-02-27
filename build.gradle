@@ -1,4 +1,4 @@
-defaultTasks "run" // gradle とコマンドすると gradle run になる
+defaultTasks "run" // default: gradle run
 
 buildscript {
     ext.kotlin_version = "1.0.6"
@@ -31,11 +31,10 @@ dependencies {
 
 test {
     testLogging {
-        exceptionFormat = "full" // fail時に詳細を表示
+        exceptionFormat = "full" // display log details when fail
     }
 }
 
-/* jar ファイルを /build/libs 下に作成 */
 task createJar(type: Jar, dependsOn: jar) {
     archiveName = project.name + ".jar"
     destinationDir = file("$rootDir/dist")

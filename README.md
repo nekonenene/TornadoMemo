@@ -2,7 +2,9 @@
 
 This is the sample application using TornadoFX with MVC (Model-View-Controller) design pattern.
 
-![TornadoMemo capture01](./dist/capture01.png)
+<p align="center">
+    <img src="./dist/capture01.png" alt="TornadoMemo capture01" width="380rem" height="auto">
+</p>
 
 You will know how to construct an app with TornadoFX.
 

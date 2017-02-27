@@ -35,4 +35,12 @@ https://github.com/nekonenene/TornadoMemo/raw/master/dist/TornadoMemo.jar
 
 ## Note
 
-This project is in progress. The source contains unnecessary class or method.
+* This project is in progress. The source contains unnecessary class or method.
+* File open/save functions are not implemented now.
+* Some comments are written in Japanese.
+
+
+## Author
+
+ハトネコエ (@nekonenene)  
+https://twitter.com/nekonenene

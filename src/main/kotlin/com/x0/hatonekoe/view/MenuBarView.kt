@@ -16,41 +16,37 @@ class MenuBarView: View() {
         paddingHorizontal = 4
 
         menu("File") {
-            menuitem("New", KeyCombination.valueOf("Shortcut+N"))
-            menuitem("Open", KeyCombination.valueOf("Shortcut+O"))
-            menuitem("Save", KeyCombination.valueOf("Shortcut+S"))
-            menuitem("Save as new file", KeyCombination.valueOf("Shortcut+W"))
-            menuitem("Quit", KeyCombination.valueOf("Shortcut+Q"))
-                .setOnAction {
+            item("New", KeyCombination.valueOf("Shortcut+N"))
+            item("Open", KeyCombination.valueOf("Shortcut+O"))
+            item("Save", KeyCombination.valueOf("Shortcut+S"))
+            item("Save as new file", KeyCombination.valueOf("Shortcut+W"))
+            item("Quit", KeyCombination.valueOf("Shortcut+Q")) {
+                setOnAction {
                     Platform.exit()
                 }
+            }
         }
 
         menu("Edit") {
-            menuitem("Select All", KeyCombination.valueOf("Shortcut+A"))
-                .setOnAction {
+            item("Select All", KeyCombination.valueOf("Shortcut+A")) {
+                setOnAction {
                     println("Select!")
                     textAreaController.selectAll()
                 }
-            menuitem("Copy", KeyCombination.valueOf("Shortcut+C"))
-                .setOnAction {
+            }
+            item("Copy", KeyCombination.valueOf("Shortcut+C")) {
+                setOnAction {
                     textAreaController.copyText()
                 }
-            menuitem("Cut", KeyCombination.valueOf("Shortcut+X"))
-                .setOnAction {
+            }
+            item("Cut", KeyCombination.valueOf("Shortcut+X")) {
+                setOnAction {
                     textAreaController.cutText()
                 }
-            menuitem("Paste", KeyCombination.valueOf("Shortcut+V"))
-                .setOnAction {
-                    textAreaController.pasteText()
-                }
-        }
-
-        menu("Test") {
-            menuitem("Item1") {
-                // この setOnAction の書き方だと、１度目に押されたときに反応しない。バグ？
+            }
+            item("Paste", KeyCombination.valueOf("Shortcut+V")) {
                 setOnAction {
-                    println("Item1 pushed!")
+                    textAreaController.pasteText()
                 }
             }
         }

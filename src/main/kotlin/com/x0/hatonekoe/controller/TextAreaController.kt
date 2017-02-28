@@ -1,12 +1,12 @@
 package com.x0.hatonekoe.controller
 
-import com.x0.hatonekoe.model.ModelManager
 import com.x0.hatonekoe.view.TextAreaView
 import tornadofx.Controller
 
 class TextAreaController: Controller() {
     val textAreaView: TextAreaView by inject()
     val textArea = textAreaView.root
+    val footerController: FooterController by inject()
 
     /** select all text in TextArea */
     fun selectAll() {
@@ -16,29 +16,22 @@ class TextAreaController: Controller() {
     /** copy selected text */
     fun copyText() {
         textArea.copy()
-        updateTextDocModel()
     }
 
     /** cut selected text */
     fun cutText() {
         textArea.cut()
-        updateTextDocModel()
     }
 
     /** paste to TextArea from ClipBoard */
     fun pasteText() {
         textArea.paste()
-        updateTextDocModel()
-    }
-
-    /** TextArea の中身に合わせて TextDocumentModel の中身を更新 */
-    fun updateTextDocModel() {
-        ModelManager.textDocumentModel.text.value = textArea.text
     }
 
     /** set text in TextArea */
     fun setText(text: String) {
         textArea.text = text
+        footerController.updateCounter()
     }
 
     /** get text in TextArea */

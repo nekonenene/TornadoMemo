@@ -22,7 +22,6 @@ class MenuBarController: Controller() {
         try {
             val text = file.readText(Charsets.UTF_8)
             textAreaController.setText(text)
-            textAreaController.updateTextDocModel()
         } catch (e: Exception) {
             println(e)
         }

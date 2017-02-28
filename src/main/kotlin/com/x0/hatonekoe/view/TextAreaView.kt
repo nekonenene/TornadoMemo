@@ -14,6 +14,7 @@ class TextAreaView: View() {
     override val root = textarea {
         useMaxWidth = true
         font = Font.font(16.0)
+        isWrapText = true
 
         setOnKeyReleased {
             textAreaController.updateTextDocModel()

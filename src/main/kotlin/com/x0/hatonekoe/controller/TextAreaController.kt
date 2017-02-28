@@ -8,24 +8,24 @@ class TextAreaController: Controller() {
     val textAreaView: TextAreaView by inject()
     val textArea = textAreaView.root
 
-    /** TextArea の中身を全選択 */
+    /** select all text in TextArea */
     fun selectAll() {
         textArea.selectAll()
     }
 
-    /** 選択範囲をコピー */
+    /** copy selected text */
     fun copyText() {
         textArea.copy()
         updateTextDocModel()
     }
 
-    /** 選択範囲を切り取り */
+    /** cut selected text */
     fun cutText() {
         textArea.cut()
         updateTextDocModel()
     }
 
-    /** TextArea にクリップボードから貼り付け */
+    /** paste to TextArea from ClipBoard */
     fun pasteText() {
         textArea.paste()
         updateTextDocModel()
@@ -34,5 +34,15 @@ class TextAreaController: Controller() {
     /** TextArea の中身に合わせて TextDocumentModel の中身を更新 */
     fun updateTextDocModel() {
         ModelManager.textDocumentModel.text.value = textArea.text
+    }
+
+    /** set text in TextArea */
+    fun setText(text: String) {
+        textArea.text = text
+    }
+
+    /** get text in TextArea */
+    fun getText(): String {
+        return textArea.text
     }
 }

@@ -17,7 +17,11 @@ class MenuBarView: View() {
 
         menu("File") {
             item("New", KeyCombination.valueOf("Shortcut+N"))
-            item("Open", KeyCombination.valueOf("Shortcut+O"))
+            item("Open", KeyCombination.valueOf("Shortcut+O")) {
+                setOnAction {
+                    menuBarController.openFile()
+                }
+            }
             item("Save", KeyCombination.valueOf("Shortcut+S"))
             item("Save as new file", KeyCombination.valueOf("Shortcut+W"))
             item("Quit", KeyCombination.valueOf("Shortcut+Q")) {
@@ -30,7 +34,6 @@ class MenuBarView: View() {
         menu("Edit") {
             item("Select All", KeyCombination.valueOf("Shortcut+A")) {
                 setOnAction {
-                    println("Select!")
                     textAreaController.selectAll()
                 }
             }

@@ -5,7 +5,6 @@ import com.x0.hatonekoe.controller.TextAreaController
 import com.x0.hatonekoe.model.ModelManager
 import javafx.scene.text.Font
 import tornadofx.View
-import tornadofx.bind
 import tornadofx.textarea
 import tornadofx.useMaxWidth
 
@@ -18,9 +17,8 @@ class TextAreaView: View() {
         font = Font.font(16.0)
         isWrapText = true
 
-        // bind bidirectional
-        bind(ModelManager.textDocumentModel.text)
-        ModelManager.textDocumentModel.text.bind(this.textProperty())
+        // bind bidirectional (Model <=> TextArea)
+        ModelManager.textDocumentModel.textProperty.bindBidirectional(this.textProperty())
 
         setOnKeyReleased {
             footerController.updateCounter()

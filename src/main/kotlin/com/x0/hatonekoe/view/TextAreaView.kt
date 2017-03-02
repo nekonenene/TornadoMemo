@@ -1,7 +1,6 @@
 package com.x0.hatonekoe.view
 
 import com.x0.hatonekoe.controller.TextAreaController
-import com.x0.hatonekoe.model.ModelManager
 import javafx.scene.text.Font
 import tornadofx.View
 import tornadofx.textarea
@@ -14,8 +13,5 @@ class TextAreaView: View() {
         useMaxWidth = true
         font = Font.font(16.0)
         isWrapText = true
-
-        // bind bidirectional (Model <=> TextArea)
-        ModelManager.textDocumentModel.textProperty.bindBidirectional(this.textProperty())
     }
 }

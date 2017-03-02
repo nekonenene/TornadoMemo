@@ -1,5 +1,6 @@
 package com.x0.hatonekoe.model
 
+import com.x0.hatonekoe.view.TextAreaView
 import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleStringProperty
 import tornadofx.ViewModel
@@ -9,6 +10,9 @@ import tornadofx.ViewModel
  * charCountText: フッターに表示されている「Count: 6」などのカウンター文字列
  */
 class TextDocumentModel: ViewModel() {
+    val textAreaView: TextAreaView by inject()
+    val textArea = textAreaView.root
+
     val textProperty = SimpleStringProperty("")
     val charCounterProperty = SimpleIntegerProperty(0)
 
@@ -16,6 +20,9 @@ class TextDocumentModel: ViewModel() {
     val charCounter = bind { charCounterProperty }
 
     init {
+        // bind bidirectional (textProperty <=> textArea)
+        textProperty.bindBidirectional(textArea.textProperty())
+
         // when update text, then update charCounter
         textProperty.addListener({
             observableValue, oldValue, newValue ->

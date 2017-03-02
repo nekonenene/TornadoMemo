@@ -6,7 +6,6 @@ import tornadofx.Controller
 class TextAreaController: Controller() {
     val textAreaView: TextAreaView by inject()
     val textArea = textAreaView.root
-    val footerController: FooterController by inject()
 
     /** select all text in TextArea */
     fun selectAll() {
@@ -31,7 +30,6 @@ class TextAreaController: Controller() {
     /** set text in TextArea */
     fun setText(text: String) {
         textArea.text = text
-        footerController.updateCounter()
     }
 
     /** get text in TextArea */

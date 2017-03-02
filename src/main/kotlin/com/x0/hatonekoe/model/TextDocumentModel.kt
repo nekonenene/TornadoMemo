@@ -1,6 +1,6 @@
 package com.x0.hatonekoe.model
 
-import com.x0.hatonekoe.view.TextAreaView
+import javafx.beans.property.SimpleIntegerProperty
 import javafx.beans.property.SimpleStringProperty
 import tornadofx.ViewModel
 
@@ -10,8 +10,16 @@ import tornadofx.ViewModel
  */
 class TextDocumentModel: ViewModel() {
     val textProperty = SimpleStringProperty("")
-    val charCounterTextProperty = SimpleStringProperty()
+    val charCounterProperty = SimpleIntegerProperty(0)
 
     val text = bind { textProperty }
-    val charCounterText = bind { charCounterTextProperty }
+    val charCounter = bind { charCounterProperty }
+
+    init {
+        // when update text, then update charCounter
+        textProperty.addListener({
+            observableValue, oldValue, newValue ->
+            charCounterProperty.set(newValue.length)
+        })
+    }
 }

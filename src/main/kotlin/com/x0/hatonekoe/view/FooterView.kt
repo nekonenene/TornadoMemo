@@ -11,15 +11,11 @@ class FooterView: View() {
     override val root = hbox {
         alignment = Pos.CENTER_RIGHT
 
-        label(ModelManager.textDocumentModel.charCounterText) {
+        label(ModelManager.textDocumentModel.charCounter) {
             useMaxWidth = true
             alignment = Pos.CENTER_RIGHT
             paddingHorizontal = 8
             paddingVertical = 6
         }
-    }
-
-    init {
-        footerController.updateCounter()
     }
 }

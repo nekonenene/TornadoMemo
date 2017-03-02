@@ -6,8 +6,8 @@ import javafx.beans.property.SimpleStringProperty
 import tornadofx.ViewModel
 
 /**
- * text: textArea に表示されている文字列
- * charCountText: フッターに表示されている「Count: 6」などのカウンター文字列
+ * text: text in the textArea
+ * charCounter: counter of characters
  */
 class TextDocumentModel: ViewModel() {
     val textAreaView: TextAreaView by inject()

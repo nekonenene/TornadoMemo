@@ -1,6 +1,6 @@
 package com.x0.hatonekoe.model
 
-/** すべてのModelはここで管理する */
+/** Manage all models */
 object ModelManager {
     val textDocumentModel = TextDocumentModel()
 }

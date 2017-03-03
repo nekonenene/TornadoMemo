@@ -12,7 +12,7 @@ class MenuBarController: Controller() {
 
     fun openFile() {
         val txtFilter = FileChooser.ExtensionFilter("text files (*.txt)", "*.txt")
-        val fileList = chooseFile("Open text file", arrayOf(txtFilter), FileChooserMode.Single)
+        val fileList = chooseFile(null, arrayOf(txtFilter), FileChooserMode.Single)
         if (fileList.isEmpty()) {
             return
         }

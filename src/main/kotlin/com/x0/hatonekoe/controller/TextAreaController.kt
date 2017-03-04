@@ -7,6 +7,16 @@ class TextAreaController: Controller() {
     val textAreaView: TextAreaView by inject()
     val textArea = textAreaView.root
 
+    /** Undo */
+    fun undo() {
+        textArea.undo()
+    }
+
+    /** Redo */
+    fun redo() {
+        textArea.redo()
+    }
+
     /** select all text in TextArea */
     fun selectAll() {
         textArea.selectAll()

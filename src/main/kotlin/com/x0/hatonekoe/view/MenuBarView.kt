@@ -32,6 +32,19 @@ class MenuBarView: View() {
         }
 
         menu("Edit") {
+            item("Undo", KeyCombination.valueOf("Shortcut+Z")) {
+                setOnAction {
+                    textAreaController.undo()
+                }
+            }
+            item("Redo", KeyCombination.valueOf("Shortcut+Shift+Z")) {
+                setOnAction {
+                    textAreaController.redo()
+                }
+            }
+
+            separator()
+
             item("Select All", KeyCombination.valueOf("Shortcut+A")) {
                 setOnAction {
                     textAreaController.selectAll()

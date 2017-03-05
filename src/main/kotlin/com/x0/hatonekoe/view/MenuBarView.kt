@@ -23,7 +23,11 @@ class MenuBarView: View() {
                 }
             }
             item("Save", KeyCombination.valueOf("Shortcut+S"))
-            item("Save as new file", KeyCombination.valueOf("Shortcut+W"))
+            item("Save as new file", KeyCombination.valueOf("Shortcut+W")) {
+                setOnAction {
+                    menuBarController.writeFile()
+                }
+            }
             item("Quit", KeyCombination.valueOf("Shortcut+Q")) {
                 setOnAction {
                     Platform.exit()

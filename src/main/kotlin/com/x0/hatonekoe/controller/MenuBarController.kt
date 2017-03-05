@@ -25,7 +25,7 @@ class MenuBarController: Controller() {
 
         try {
             val text = file.readText(Charsets.UTF_8)
-            ModelManager.textDocumentModel.textProperty.set(text)
+            ModelManager.textModel.textProperty.set(text)
         } catch (e: Exception) {
             println(e)
         }
@@ -43,7 +43,7 @@ class MenuBarController: Controller() {
             }
 
         try {
-            val text = ModelManager.textDocumentModel.text.value
+            val text = ModelManager.textModel.text.value
             val fileWriter = FileWriter(targetFile)
             fileWriter.write(text)
             fileWriter.close()

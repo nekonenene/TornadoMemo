@@ -9,7 +9,7 @@ import tornadofx.ViewModel
  * text: text in the textArea
  * charCounter: counter of characters
  */
-class TextDocumentModel: ViewModel() {
+class TextModel : ViewModel() {
     val textAreaView: TextAreaView by inject()
     val textArea = textAreaView.root
 

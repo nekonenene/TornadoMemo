@@ -19,7 +19,7 @@ class FooterView: View() {
             paddingVertical = 6
 
             // display the char counter e.g. "Count: 43"
-            this.textProperty().bind(Bindings.concat("Count: ", ModelManager.textDocumentModel.charCounterProperty))
+            this.textProperty().bind(Bindings.concat("Count: ", ModelManager.textModel.charCounterProperty))
         }
     }
 }

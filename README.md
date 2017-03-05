@@ -1,6 +1,4 @@
-# Tornado Memo
-
-[![CircleCI](https://circleci.com/gh/nekonenene/TornadoMemo/tree/master.svg?style=svg)](https://circleci.com/gh/nekonenene/TornadoMemo/tree/master)
+# Tornado Memo [![CircleCI](https://circleci.com/gh/nekonenene/TornadoMemo/tree/master.svg?style=svg)](https://circleci.com/gh/nekonenene/TornadoMemo/tree/master)
 
 ## What's this?
 

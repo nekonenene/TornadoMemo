@@ -6,49 +6,67 @@ import javafx.stage.FileChooser
 import tornadofx.Controller
 import tornadofx.FileChooserMode
 import tornadofx.chooseFile
+import java.io.File
 import java.io.FileWriter
 
 class MenuBarController: Controller() {
     val menuBarView: MenuBarView by inject()
-    val textAreaController: TextAreaController by inject()
+
+    private val txtFilter = FileChooser.ExtensionFilter("text files (*.txt)", "*.txt")
 
     /** Open a file and set the text in the textArea */
     fun openFile() {
-        val txtFilter = FileChooser.ExtensionFilter("text files (*.txt)", "*.txt")
-        val fileList = chooseFile(null, arrayOf(txtFilter), FileChooserMode.Single)
-        val file =
-            if (fileList.isEmpty()) {
-                return // END
-            } else {
-                fileList.first()
-            }
+        val file = chooseTextFile(FileChooserMode.Single) ?: return
 
         try {
             val text = file.readText(Charsets.UTF_8)
             ModelManager.textModel.textProperty.set(text)
+            ModelManager.fileModel.fileProperty.set(file)
         } catch (e: Exception) {
             println(e)
         }
     }
 
-    /** Save the textArea to new file */
-    fun writeFile() {
-        val txtFilter = FileChooser.ExtensionFilter("text files (*.txt)", "*.txt")
-        val fileList = chooseFile(null, arrayOf(txtFilter), FileChooserMode.Save)
-        val targetFile =
+    /** Save the textArea to a file
+     *
+     * @param targetFile: Save to this file. If this parameter is null, Save to new file.
+     */
+    fun writeFile(targetFile: File? = null) {
+        val file: File
+
+        if (targetFile == null) {
+            // If the user didn't select, then finish this method.
+            file = chooseTextFile(FileChooserMode.Save) ?: return
+        } else {
+            file = targetFile
+        }
+
+        try {
+            val text = ModelManager.textModel.text.value
+            val fileWriter = FileWriter(file)
+            fileWriter.write(text)
+            fileWriter.close()
+
+            ModelManager.fileModel.fileProperty.set(file)
+        } catch (e: Exception) {
+            println(e)
+        }
+    }
+
+    /** Open the dialog for choose a file
+     *
+     * @param mode: Use FileChooserMode.Single or FileChooserMode.Save
+     */
+    private fun chooseTextFile(mode: FileChooserMode): File? {
+        val fileList = chooseFile(null, arrayOf(txtFilter), mode)
+
+        val file =
             if (fileList.isEmpty()) {
-                return // END
+                null
             } else {
                 fileList.first()
             }
 
-        try {
-            val text = ModelManager.textModel.text.value
-            val fileWriter = FileWriter(targetFile)
-            fileWriter.write(text)
-            fileWriter.close()
-        } catch (e: Exception) {
-            println(e)
-        }
+        return file
     }
 }

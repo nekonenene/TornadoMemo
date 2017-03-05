@@ -11,7 +11,7 @@ import kotlin.test.assertNull
 
 class FileModelTest {
     val fileModel = ModelManager.fileModel
-    val testFile: File = File(javaClass.classLoader.getResource("test/testFile.txt").file)
+    val testFile: File = File(javaClass.classLoader.getResource("testFile.txt").file)
 
     companion object {
         @BeforeClass @JvmStatic

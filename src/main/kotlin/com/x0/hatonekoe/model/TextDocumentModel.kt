@@ -25,7 +25,7 @@ class TextDocumentModel: ViewModel() {
 
         // when update text, then update charCounter
         textProperty.addListener({
-            observableValue, oldValue, newValue ->
+            /*observableValue*/_, /*oldValue*/_, newValue ->
             charCounterProperty.set(newValue.length)
         })
     }

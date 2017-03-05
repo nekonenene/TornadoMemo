@@ -29,4 +29,8 @@ class TextModel : ViewModel() {
             charCounterProperty.set(newValue.length)
         })
     }
+
+    fun reset() {
+        textProperty.set("")
+    }
 }

@@ -17,7 +17,11 @@ class MenuBarView: View() {
         paddingHorizontal = 4
 
         menu("File") {
-            item("New", KeyCombination.valueOf("Shortcut+N"))
+            item("New", KeyCombination.valueOf("Shortcut+N")) {
+                setOnAction {
+                    ModelManager.reset()
+                }
+            }
             item("Open", KeyCombination.valueOf("Shortcut+O")) {
                 setOnAction {
                     menuBarController.openFile()

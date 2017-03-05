@@ -1,6 +1,8 @@
 package com.x0.hatonekoe.view
 
 import com.x0.hatonekoe.controller.MainController
+import com.x0.hatonekoe.model.ModelManager
+import javafx.beans.binding.Bindings
 import tornadofx.View
 import tornadofx.borderpane
 
@@ -20,5 +22,6 @@ class MainView: View("TornadoMemo") {
 
     init {
         title = "Tornado Memo"
+        titleProperty.bind(Bindings.concat("TornadoMemo", ModelManager.fileModel.mainWindowTitleProperty))
     }
 }

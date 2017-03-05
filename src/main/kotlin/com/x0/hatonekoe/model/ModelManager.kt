@@ -4,4 +4,9 @@ package com.x0.hatonekoe.model
 object ModelManager {
     val textModel = TextModel()
     val fileModel = FileModel()
+
+    fun reset() {
+        textModel.reset()
+        fileModel.reset()
+    }
 }

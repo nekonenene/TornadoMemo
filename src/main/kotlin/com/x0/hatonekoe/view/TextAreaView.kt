@@ -1,6 +1,7 @@
 package com.x0.hatonekoe.view
 
 import com.x0.hatonekoe.controller.TextAreaController
+import com.x0.hatonekoe.service.Constant
 import javafx.scene.text.Font
 import tornadofx.View
 import tornadofx.textarea
@@ -11,7 +12,7 @@ class TextAreaView: View() {
 
     override val root = textarea {
         useMaxWidth = true
-        font = Font.font(16.0)
+        font = Font.font(Constant.TEXTAREA_FONT_SIZE)
         isWrapText = true
     }
 }

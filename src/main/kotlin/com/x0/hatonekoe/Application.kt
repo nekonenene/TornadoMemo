@@ -1,5 +1,6 @@
 package com.x0.hatonekoe
 
+import com.x0.hatonekoe.service.Constant
 import com.x0.hatonekoe.view.MainView
 import javafx.application.Application
 import javafx.stage.Stage
@@ -15,8 +16,8 @@ class TornadoMemoApp: App() {
     override fun start(stage: Stage) {
         super.start(stage)
         stage.isFullScreen = false
-        stage.minWidth  = 280.0
-        stage.minHeight = 150.0
+        stage.minWidth  = Constant.WINDOW_MIN_WIDTH
+        stage.minHeight = Constant.WINDOW_MIN_HEIGHT
     }
 
     override fun stop() {

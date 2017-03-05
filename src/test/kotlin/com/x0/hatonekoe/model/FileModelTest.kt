@@ -11,7 +11,7 @@ import kotlin.test.assertNull
 
 class FileModelTest {
     val fileModel = ModelManager.fileModel
-    val testFile: File = File(javaClass.classLoader.getResource("testFile.txt").file)
+    val testFile: File = File(javaClass.classLoader.getResource("test01.txt").file)
 
     companion object {
         @BeforeClass @JvmStatic
@@ -25,8 +25,8 @@ class FileModelTest {
     @Test
     fun mainWindowTitleTest() {
         fileModel.fileProperty.set(testFile)
-        assertEquals("testFile.txt", fileModel.file.value?.name)
-        assertEquals(" [testFile.txt]", fileModel.mainWindowTitleProperty.value)
+        assertEquals("test01.txt", fileModel.file.value?.name)
+        assertEquals(" [test01.txt]", fileModel.mainWindowTitleProperty.value)
     }
 
     @Test

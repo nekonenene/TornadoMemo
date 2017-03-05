@@ -11,8 +11,15 @@ object FileService {
     private val txtFilter = FileChooser.ExtensionFilter("text files (*.txt)", "*.txt")
 
     /** Open a file and set the text in the textArea */
-    fun openFile() {
-        val file = chooseTextFile(FileChooserMode.Single) ?: return
+    fun openFile(targetFile: File? = null) {
+        val file: File
+
+        if (targetFile == null) {
+            // If the user didn't select, then finish this method.
+            file = chooseTextFile(FileChooserMode.Single) ?: return
+        } else {
+            file = targetFile
+        }
 
         try {
             val text = file.readText(Charsets.UTF_8)
@@ -64,5 +71,13 @@ object FileService {
             }
 
         return file
+    }
+
+    /** Is the file .txt?
+     *
+     * @param targetFile: Check this file if is .txt or not
+     */
+    fun isTextFile(targetFile: File): Boolean {
+        return (targetFile.extension == "txt")
     }
 }

@@ -1,5 +1,7 @@
 # Tornado Memo
 
+[![CircleCI](https://circleci.com/gh/nekonenene/TornadoMemo/tree/master.svg?style=svg)](https://circleci.com/gh/nekonenene/TornadoMemo/tree/master)
+
 ## What's this?
 
 This is the sample application using **TornadoFX** with MVC (Model-View-Controller) design pattern.
@@ -31,12 +33,6 @@ https://github.com/nekonenene/TornadoMemo/raw/master/dist/TornadoMemo.jar
 * [**TornadoFX**](https://github.com/edvin/tornadofx)
 * [TornadoFX Samples](https://github.com/edvin/tornadofx-samples)
 * [**Kotlin**](http://kotlinlang.org/)
-
-
-## Note
-
-* This project is in progress. The source contains unnecessary classes or methods.
-* Some comments are written in Japanese.
 
 
 ## Author

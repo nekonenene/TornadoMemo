@@ -1,13 +1,16 @@
 package com.x0.hatonekoe.service
 
 import com.x0.hatonekoe.model.ModelManager
+import javafx.scene.control.Alert
 import javafx.stage.FileChooser
 import tornadofx.FileChooserMode
+import tornadofx.alert
 import tornadofx.chooseFile
 import java.io.File
 import java.io.FileWriter
 
 object FileService {
+    private val allFilter = FileChooser.ExtensionFilter("all files (*.*)", "*.*")
     private val txtFilter = FileChooser.ExtensionFilter("text files (*.txt)", "*.txt")
 
     /** Open a file and set the text in the textArea */
@@ -21,6 +24,10 @@ object FileService {
             file = targetFile
         }
 
+        if (!canOpenFile(file)) {
+            return
+        }
+
         try {
             val text = file.readText(Charsets.UTF_8)
             ModelManager.textModel.textProperty.set(text)
@@ -28,6 +35,19 @@ object FileService {
         } catch (e: Exception) {
             println(e)
         }
+    }
+
+    /** Check whether file can open */
+    fun canOpenFile(targetFile: File): Boolean {
+        if (isBigFile(targetFile)) {
+            val alertHeader = "File size limit"
+            val alertContent = "File size is too large.\nYou can only open files within " +
+                displayFileSize(Constant.OPEN_FILE_SIZE_LIMIT_BYTE.toLong()) + "."
+            alert(Alert.AlertType.WARNING, alertHeader, alertContent)
+            return false
+        }
+
+        return true
     }
 
     /** Save the textArea to a file
@@ -61,7 +81,7 @@ object FileService {
      * @param mode: Use FileChooserMode.Single or FileChooserMode.Save
      */
     fun chooseTextFile(mode: FileChooserMode): File? {
-        val fileList = chooseFile(null, arrayOf(txtFilter), mode)
+        val fileList = chooseFile(null, arrayOf(allFilter, txtFilter), mode)
 
         val file =
             if (fileList.isEmpty()) {
@@ -75,9 +95,41 @@ object FileService {
 
     /** Is the file .txt?
      *
-     * @param targetFile: Check this file if is .txt or not
+     * @param targetFile: Check this file whether the extension is .txt
      */
     fun isTextFile(targetFile: File): Boolean {
         return (targetFile.extension == "txt")
+    }
+
+    /** Is the file too big?
+     *
+     * @param targetFile: Check this file size whether over the limit
+     */
+    fun isBigFile(targetFile: File): Boolean {
+        return (targetFile.length() > Constant.OPEN_FILE_SIZE_LIMIT_BYTE)
+    }
+
+    /** Display the readable file size
+     *
+     * @param fileSizeByte: File size (Byte)
+     * @return Display the size with the unit for the byte
+     */
+    fun displayFileSize(fileSizeByte: Long): String {
+        var displaySize = fileSizeByte
+        var counter = 0
+
+        while (true) {
+            if (displaySize < 1_000 || counter > 2) {
+                when (counter) {
+                    0 -> return "$displaySize Byte"
+                    1 -> return "$displaySize KB"
+                    2 -> return "$displaySize MB"
+                    else -> return "$displaySize GB"
+                }
+            } else {
+                ++counter
+                displaySize /= 1_000
+            }
+        }
     }
 }

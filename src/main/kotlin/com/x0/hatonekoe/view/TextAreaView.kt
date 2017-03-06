@@ -35,14 +35,10 @@ class TextAreaView: View() {
 
                 if (dragBoard.files.size == 1) {
                     val file: File = dragBoard.files.first()
-
-                    if (FileService.isTextFile(file)) {
-                        FileService.openFile(file)
-                        event.isDropCompleted = true
-                        return@run
-                    }
+                    FileService.openFile(file)
+                    event.isDropCompleted = true
+                    return@run
                 }
-
                 event.isDropCompleted = false
             }
         }

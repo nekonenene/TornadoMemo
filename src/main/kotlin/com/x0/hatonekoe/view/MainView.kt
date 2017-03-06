@@ -7,7 +7,7 @@ import javafx.beans.binding.Bindings
 import tornadofx.View
 import tornadofx.borderpane
 
-class MainView: View("TornadoMemo") {
+class MainView: View(Constant.APP_NAME) {
     private val mainController: MainController by inject()
 
     override val root = borderpane {

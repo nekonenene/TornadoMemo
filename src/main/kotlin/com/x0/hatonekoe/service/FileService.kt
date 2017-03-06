@@ -93,14 +93,6 @@ object FileService {
         return file
     }
 
-    /** Is the file .txt?
-     *
-     * @param targetFile: Check this file whether the extension is .txt
-     */
-    fun isTextFile(targetFile: File): Boolean {
-        return (targetFile.extension == "txt")
-    }
-
     /** Is the file too big?
      *
      * @param targetFile: Check this file size whether over the limit

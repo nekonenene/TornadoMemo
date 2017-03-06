@@ -30,12 +30,12 @@ class MenuBarView: View() {
             }
             item("Save", KeyCombination.valueOf("Shortcut+S")) {
                 setOnAction {
-                    FileService.writeFile(ModelManager.fileModel.file.value)
+                    FileService.saveFile(ModelManager.fileModel.file.value)
                 }
             }
             item("Save as new file", KeyCombination.valueOf("Shortcut+W")) {
                 setOnAction {
-                    FileService.writeFile()
+                    FileService.saveFile()
                 }
             }
             item("Quit", KeyCombination.valueOf("Shortcut+Q")) {

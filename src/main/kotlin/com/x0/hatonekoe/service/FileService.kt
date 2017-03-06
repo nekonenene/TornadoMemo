@@ -6,12 +6,12 @@ import javafx.stage.FileChooser
 import tornadofx.FileChooserMode
 import tornadofx.alert
 import tornadofx.chooseFile
-import java.io.File
-import java.io.FileWriter
+import java.io.*
+
 
 object FileService {
+    private val txtFilter = FileChooser.ExtensionFilter("text files (*.txt, *.rtf)", "*.txt", "*.rtf")
     private val allFilter = FileChooser.ExtensionFilter("all files (*.*)", "*.*")
-    private val txtFilter = FileChooser.ExtensionFilter("text files (*.txt)", "*.txt")
 
     /** Open a file and set the text in the textArea */
     fun openFile(targetFile: File? = null) {
@@ -29,7 +29,8 @@ object FileService {
         }
 
         try {
-            val text = file.readText(Charsets.UTF_8)
+            //val text = file.readText(Charsets.UTF_8)
+            val text = readFileWithBuffer(file)
             ModelManager.textModel.textProperty.set(text)
             ModelManager.fileModel.fileProperty.set(file)
         } catch (e: Exception) {
@@ -50,11 +51,26 @@ object FileService {
         return true
     }
 
+    /** Is the file too big?
+     *
+     * @param targetFile: Check this file size whether over the limit
+     */
+    fun isBigFile(targetFile: File): Boolean {
+        return (targetFile.length() > Constant.OPEN_FILE_SIZE_LIMIT_BYTE)
+    }
+
+    /** Read the file rapidly */
+    fun readFileWithBuffer(file: File): String {
+        val inputStream = BufferedInputStream(FileInputStream(file))
+
+        return inputStream.bufferedReader(Charsets.UTF_8).use(BufferedReader::readText)
+    }
+
     /** Save the textArea to a file
      *
      * @param targetFile: Save to this file. If this parameter is null, Save to new file.
      */
-    fun writeFile(targetFile: File? = null) {
+    fun saveFile(targetFile: File? = null) {
         val file: File
 
         if (targetFile == null) {
@@ -81,7 +97,7 @@ object FileService {
      * @param mode: Use FileChooserMode.Single or FileChooserMode.Save
      */
     fun chooseTextFile(mode: FileChooserMode): File? {
-        val fileList = chooseFile(null, arrayOf(allFilter, txtFilter), mode)
+        val fileList = chooseFile(null, arrayOf(txtFilter, allFilter), mode)
 
         val file =
             if (fileList.isEmpty()) {
@@ -91,14 +107,6 @@ object FileService {
             }
 
         return file
-    }
-
-    /** Is the file too big?
-     *
-     * @param targetFile: Check this file size whether over the limit
-     */
-    fun isBigFile(targetFile: File): Boolean {
-        return (targetFile.length() > Constant.OPEN_FILE_SIZE_LIMIT_BYTE)
     }
 
     /** Display the readable file size

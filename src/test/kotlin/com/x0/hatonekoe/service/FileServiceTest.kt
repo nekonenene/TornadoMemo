@@ -14,6 +14,13 @@ class FileServiceTest {
     }
 
     @Test
+    fun readFileWithBufferTest() {
+        val textFile: File = File(javaClass.classLoader.getResource("test01.txt").file)
+
+        assertEquals("Hello.\n", FileService.readFileWithBuffer(textFile))
+    }
+
+    @Test
     fun displayFileSizeTest() {
         assertEquals("3 Byte", FileService.displayFileSize(3))
         assertEquals("3 KB", FileService.displayFileSize(3_000))

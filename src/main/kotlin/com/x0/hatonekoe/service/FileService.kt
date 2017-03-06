@@ -42,7 +42,7 @@ object FileService {
         if (isBigFile(targetFile)) {
             val alertHeader = "File size limit"
             val alertContent = "File size is too large.\nYou can only open files within " +
-                displayFileSize(Constant.OPEN_FILE_SIZE_LIMIT_BYTE.toLong()) + "."
+                displayFileSize(Constant.OPEN_FILE_SIZE_LIMIT_BYTE) + "."
             alert(Alert.AlertType.WARNING, alertHeader, alertContent)
             return false
         }
